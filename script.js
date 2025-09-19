@@ -2,9 +2,9 @@
 //mudar dia para data atual
 async function fetchCardapios() {
     try {
-        //const url = 'https://api-cantina-storage.vercel.app/cardapios'
-        const url = './cardapios.json'
-        const response = await fetch(url)
+//        const url = 'https://api-cantina-storage.vercel.app/cardapios'
+const url  
+const response = await fetch(url)
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -367,7 +367,7 @@ function fieldsetAnexarArquivo() {
 
 
 function capturarDadosFormulario(form) {
-  const imgbbAPIKey = '3e7ec12ccf90337425a4ac5bd79965fe'; // Substitua pela sua chave real
+  const imgbbAPIKey = 'ae4c387617b87521016772a4bf82172b'; // Substitua pela sua chave real
 
   form.addEventListener('submit', async function(event) {
     event.preventDefault();
@@ -418,3 +418,103 @@ function capturarDadosFormulario(form) {
     enviarDadosParaAPI(dados);
   });
 }
+
+
+async function enviarDadosParaAPI(dados) {
+  try {
+    const resposta = await fetch('https://api-cantina-storage.vercel.app/respostas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados)
+    });
+
+    const texto = await resposta.text();
+    console.log('🔍 Resposta do servidor:', texto);
+
+    if (resposta.ok) {
+      alert('✅ Resposta enviada com sucesso!');
+    } else {
+      alert('✅ Resposta enviada com sucesso no JSON FAKE!');
+     // alert('❌ Erro ao enviar os dados.');
+    }
+  } catch (erro) {
+    console.error('Erro na requisição:', erro);
+    alert('❌ Falha na conexão com o servidor.');
+  }
+}
+
+
+function mostrarPesquisa() {
+    const aside = document.querySelector('aside');
+    aside.innerHTML = ''; 
+
+    const h2 = document.createElement('h2');
+    h2.textContent = 'Pesquisa sobre Cardápio Escolar'
+    aside.appendChild(h2)
+
+    const form = document.createElement('form');
+
+    form.appendChild(fieldsetDadosPessoais());
+    form.appendChild(fieldsetAnexarArquivo())
+    form.appendChild(fieldsetAvaliarRefeicao());
+    form.appendChild(fieldsetComentario());
+
+    const enviar = document.createElement('button');
+    enviar.textContent = 'Enviar Resposta';
+    enviar.type = 'submit';
+    form.appendChild(enviar);
+    enviar.style.margin='15px'
+
+    const limpar = document.createElement('button')
+    limpar.textContent = "Limpar Formulário"
+    limpar.type = 'reset'
+    form.appendChild(limpar);
+    limpar.style.margin='15px'
+
+    aside.appendChild(form);
+    capturarDadosFormulario(form);
+}
+
+
+async function iniciarSite() {
+    const h2 = document.createElement('h2');
+    main.appendChild(h2);
+    const cardapios = await fetchCardapios();
+    if (!cardapios) {
+        h2.textContent = 'Cardápio Indisponível';
+        return;
+    }
+
+
+    const hoje = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
+    const turnoAtual = verificarTurnoAtual();
+
+    const cardapio = cardapios.find(c =>
+        c.turno === turnoAtual &&
+        c.data.startsWith(hoje)
+    );
+
+
+    const { dia, data, turno } = organizarRotina(cardapio);
+    h2.textContent = 'Cardápio do Dia';
+
+    const titulo = `${data} ${dia} - turno: ${turno}`;
+    main.appendChild(mostrarRefeicao(cardapio.refeicao, titulo));
+        if (cardapio.turno === "tarde") {
+    const integral = cardapios.find(c => c.turno === "integral" && c.data && c.data.startsWith(cardapio.data.slice(0, 10))
+    );
+
+    if (integral && integral.lanche) { // use && para logica e(AND)
+      const subtitulo = `Lanche ${integral.lanche.titulo} – ${dia} - ${data}`;
+      main.appendChild(mostrarRefeicao(integral.lanche, subtitulo));
+    }
+  }
+    const botaoMostrarFormulario= document.querySelector('button');
+    botaoMostrarFormulario.addEventListener('click', mostrarPesquisa);
+
+}
+
+const main = document.querySelector('main')
+let cardapios=[]
+
+iniciarSite()
