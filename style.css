@@ -1,56 +1,260 @@
+/* ======== RESET CSS BÁSICO ======== */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* ======== ESTILOS BASE ======== */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f6ee; /* Bege claro inspirado em papel escolar */
+  color: #333;
+  padding: 20px;
+}
+
+/* Header atualizado */
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: rgb(8, 235, 19);
-    width: 100%;
-    height: 200px;
+  background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhl3D2Jmq0WioZh_7hPCdFCX_kYzJe6nDe47RpxWZwzaYMp7YoS4-B3Yb47RSd6ip5Mf1WMtjeLzTjCrki5qT9F1INJ7z26vf-ucbP6vok32x16xidzfupIRIYVvpLx2suF2dOJoqEvLrwPZnhMvYS8u1E7U7JVuVQWd4WoKZWLgKWRhyKx8JET0ulH1zE/w640-h480/escola.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 45%;
+  /* Coloca a imagem alinhada ao topo */
+  height: 250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+header figure{
+  width: 30%;
+  height: 100%;
+  text-align: center;
+}
+header img {
+  border-radius: 50%;
+  height: 170px;
+  width: 170px;
 }
 
 h1 {
-    font-size: 10em;
-    height: 170px;
-    color: white;
-    text-align: center;
+  font-size: 10em; /* Restaurado para telas grandes */
+  color: rgb(228, 228, 225);
+  text-align: center;
 }
 
-footer {
-    align-items: center;
-    background-color: rgb(8, 255, 49);
-    width: 100%;
-    height: 200px;
+/* Outros estilos mantidos */
+h2, h3 {
+  text-align: center;
 }
 
-section {
-    
+h2, aside h2 {
+  color: green;
+  font-size: 3em;
 }
 
-section figure img {
-    width: 200px;
-    height: 200px;
+h3 {
+  color: orangered;
+  font-size: 2.5em;
 }
 
-h2,
-h3,p {
-    text-align: center;
+li {
+  font-size: 1.5em;
 }
-.refeicao {
-    display: flex;
+
+section, footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
 }
-h4 {
-    text-align: left;
+
+section img {
+  height: 200px;
+  width: 250px;
+  object-fit: cover;
 }
-main,footer {
-    display: flex;
+
+aside,form{
+  width: 100%;
+}
+/* ======== FORMULÁRIO ======== */
+form {
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 2px solid #a41034;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+  border: 1px solid #a41034;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f3f3f3;
+}
+
+legend {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #a41034;
+  padding: 0 10px;
+}
+
+/* Labels e inputs */
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #a41034;
+  outline: none;
+}
+
+/* Estilo especial para campos desabilitados */
+textarea:disabled {
+  background-color: #eee;
+  color: #888;
+}
+
+/* Radio e checkbox alinhados */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+/* Botão */
+button {
+  padding: 12px 24px;
+  background-color: #a41034;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #86102c;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  form {
+    padding: 20px;
+  }
+
+  legend {
+    font-size: 1.3em;
+  }
+
+  input, select, textarea {
+    font-size: 1em;
+  }
+}
+
+/* ======== MEDIA QUERIES PARA RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2.5em;
+  }
+
+  h3 {
+    font-size: 2em;
+  }
+
+  li {
+    font-size: 1.2em;
+  }
+
+  form div {
     flex-direction: column;
     align-items: center;
+  }
+  header {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+  }
+  header img {
+    height: 130px;
+    width: 130px;
+    margin-bottom: 10px;
+  }
+  section img {
+    width: 80%;
+    height: auto;
+  }
 }
-form div {
-    justify-content: ;
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  li {
+    font-size: 1em;
+  }
+
+  button {
+    width: 90%;
+    font-size: 1em;
+  }
+
+  header img {
+    height: 100px;
+    width: 100px;
+  }
+
+  section {
+    flex-direction: column;
+  }
+
+  section img {
+    width: 100%;
+    height: auto;
+  }
 }

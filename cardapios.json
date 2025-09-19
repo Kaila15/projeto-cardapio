@@ -1,0 +1,53 @@
+[
+  {
+    "data": "2025-09-19T00:00:00-03:00",
+    "turno": "integral",
+    "refeicao": {
+      "titulo": "Almoço",
+      "horario": "11:20",
+      "itens": ["Arroz", "Feijão", "Farofa", "Torresmo", "Couve"],
+      "bebida": "Suco de limão",
+      "img": ["./img/almoco.jpg","./img/img4.png"]
+    },
+    "lanche": {
+      "titulo": "Café da Tarde",
+      "horario": "14:50",
+      "itens": ["Biscoito"],
+      "bebida": "Suco",
+      "img": ["./img/img1.png","./img/img4.png"]
+    }
+  },
+  {
+    "data": "2025-09-19T00:00:00-03:00",
+    "turno": "manhã",
+    "refeicao": {
+      "titulo": "Refeição",
+      "horario": "9:30",
+      "itens": ["Arroz", "Feijão", "Farofa", "Torresmo", "Couve"],
+      "bebida": "Suco de limão",
+      "img": ["./img/almoco.jpg","./img/img4.png"]
+    }
+  },
+  {
+    "data": "2025-09-19T00:00:00-03:00",
+    "turno": "tarde",
+    "refeicao": {
+      "titulo": "Merenda",
+      "horario": "15:00",
+      "itens": ["Arroz", "Feijão", "Farofa", "Torresmo", "Couve"],
+      "bebida": "Suco de limão",
+      "img": ["./img/almoco.jpg","./img/img4.png"]
+    }
+  },
+  {
+    "data": "2025-09-19T00:00:00-03:00",
+    "turno": "noturno",
+    "refeicao": {
+      "titulo": "Janta",
+      "horario": "20:30",
+      "itens": ["Arroz", "Feijão", "Farofa", "Torresmo", "Couve"],
+      "bebida": "Suco de limão",
+      "img": ["./img/almoco.jpg","./img/img4.png"]
+    }
+  }
+]
