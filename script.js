@@ -3,7 +3,7 @@
 async function fetchCardapios() {
     try {
 //        const url = 'https://api-cantina-storage.vercel.app/cardapios'
-const url  
+const url = './cardapios.json'  
 const response = await fetch(url)
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -367,7 +367,7 @@ function fieldsetAnexarArquivo() {
 
 
 function capturarDadosFormulario(form) {
-  const imgbbAPIKey = 'ae4c387617b87521016772a4bf82172b'; // Substitua pela sua chave real
+  const imgbbAPIKey = '3e7ec12ccf90337425a4ac5bd79965fe'; // Substitua pela sua chave real
 
   form.addEventListener('submit', async function(event) {
     event.preventDefault();
